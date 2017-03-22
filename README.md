@@ -34,4 +34,3 @@
 * Closure syntax for defining functions “on the fly”
 * UIStackView
 * First peek at Autolayout (stick things to the edges)
-* test
