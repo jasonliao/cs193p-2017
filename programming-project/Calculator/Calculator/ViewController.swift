@@ -11,8 +11,10 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var display: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     var userIsInTheMiddleOfTyping = false
+
     var displayValue: Double {
         get {
             return Double(display.text!)!
@@ -21,12 +23,22 @@ class ViewController: UIViewController {
             display.text = String(newValue)
         }
     }
+    private var brain = CalendarBrain()
     
     @IBAction func touchDigit(_ sender: UIButton) {
         let digit = sender.currentTitle!
+        
         if userIsInTheMiddleOfTyping {
+            // required tasks 2.
+            let hasFloatingPoint = display.text!.contains(".")
+            
+            if digit == "." && hasFloatingPoint {
+                return
+            }
+            
             let textCurrentlyInDisplay = display.text!
             display.text = textCurrentlyInDisplay + digit
+            
         } else {
             display.text = digit
             userIsInTheMiddleOfTyping = true
@@ -34,17 +46,22 @@ class ViewController: UIViewController {
     }
     
     @IBAction func performOperation(_ sender: UIButton) {
-        userIsInTheMiddleOfTyping = false
-        if let mathematicalSymbol = sender.currentTitle {
-            switch mathematicalSymbol {
-            case "π":
-                displayValue = Double.pi
-            case "√":
-                displayValue = sqrt(displayValue)
-            default:
-                break
-            }
+        if userIsInTheMiddleOfTyping {
+            brain.setOperand(displayValue)
+            userIsInTheMiddleOfTyping = false
         }
+        if let mathematicalSymbol = sender.currentTitle {
+            brain.performOperation(mathematicalSymbol)
+        }
+        if let result = brain.retult {
+            displayValue = result
+        }
+        if brain.resultIsPending {
+            descriptionLabel.text = brain.description + "..."
+        } else {
+            descriptionLabel.text = brain.description + " = "
+        }
+        
     }
     
 
