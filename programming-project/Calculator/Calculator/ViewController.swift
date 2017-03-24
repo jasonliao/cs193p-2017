@@ -61,7 +61,17 @@ class ViewController: UIViewController {
         } else {
             descriptionLabel.text = brain.description + " = "
         }
+    }
+    
+    // required tasks 8
+    @IBAction func clear(_ sender: UIButton) {
+        descriptionLabel.text = ""
+        display.text = "0"
+        userIsInTheMiddleOfTyping = false
         
+        brain.description = ""
+        brain.equalsAddAccumulator = true
+        brain.resultIsPending = false
     }
     
 

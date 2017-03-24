@@ -59,17 +59,24 @@ struct CalendarBrain {
         get {
             return pendingBinaryOperation != nil
         }
+        set {
+            if newValue == false {
+                pendingBinaryOperation = nil
+            }
+        }
     }
-    
     // required tasks 6.
     var description = ""
+    // required tasks 7 
+    var equalsAddAccumulator = true
     
     mutating func performOperation(_ symobl: String) {
         if let operation = operations[symobl] {
             switch operation {
             case .constant(let value):
                 accumulator = value
-                description = symobl
+                description = description + " " + symobl + " "
+                equalsAddAccumulator = false
             case .unaryOperation(let function):
                 if accumulator != nil {
                     if resultIsPending {
@@ -78,6 +85,7 @@ struct CalendarBrain {
                         description = symobl + "(" + description + ")"
                     }
                     accumulator = function(accumulator!)
+                    equalsAddAccumulator = false
                 }
             case .binaryOperation(let function):
                 if accumulator != nil {
@@ -90,7 +98,9 @@ struct CalendarBrain {
                     accumulator = nil
                 }
             case .equals:
-                description = description + String(accumulator!)
+                if equalsAddAccumulator {
+                    description = description + String(accumulator!)
+                }
                 performPendingBinaryOperation()
             }
         }
@@ -105,6 +115,10 @@ struct CalendarBrain {
     
     mutating func setOperand(_ operand: Double) {
         accumulator = operand
+        equalsAddAccumulator = true
+        if !resultIsPending {
+            description = ""
+        }
     }
     
 }
