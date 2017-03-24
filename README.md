@@ -34,3 +34,17 @@
 * Closure syntax for defining functions “on the fly”
 * UIStackView
 * First peek at Autolayout (stick things to the edges)
+
+## Lecture 3
+
+[Slides](https://github.com/jasonliao/cs193p-2017/tree/master/slides/Lecture-3-Slides.pdf)
+
+* What are Optionals really?
+* Tuples
+* Range<T>
+* Data Structures, Methods and Properties
+* Array<T>, Dictionary<K,V>, String, et. al.
+* Initialization
+* AnyObject, introspection and casting (is and as)
+* UserDefaults
+* assert
