@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 struct CalendarBrain {
     
     private var accumulator: Double?
