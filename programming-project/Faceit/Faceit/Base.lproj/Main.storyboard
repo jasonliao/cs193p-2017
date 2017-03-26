@@ -39,6 +39,9 @@
                             <constraint firstItem="3m7-lE-JWB" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="wjU-2o-Xvc"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="faceView" destination="3m7-lE-JWB" id="8Si-ms-QIW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

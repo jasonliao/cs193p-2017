@@ -54,3 +54,11 @@
 [Slides](https://github.com/jasonliao/cs193p-2017/tree/master/slides/Lecture-4-Slides.pdf)
 
 * Custom Views
+
+## Lecture 5
+
+[Slides](https://github.com/jasonliao/cs193p-2017/tree/master/slides/Lecture-5-Slides.pdf)　[Reading Assignment](https://github.com/jasonliao/cs193p-2017/tree/master/reading-assignment/Reading-Assignment-2_More-Swift.pdf)　[Programming Assignment](https://github.com/jasonliao/cs193p-2017/tree/master/programming-assignment/Programming-Project-2_Calculator-Brain.pdf)
+
+* Demo (FaceIt)
+* Gestures
+* Multiple MVCs
