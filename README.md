@@ -62,3 +62,12 @@
 * Demo (FaceIt)
 * Gestures
 * Multiple MVCs
+
+## Lecture 6
+
+[Slides](https://github.com/jasonliao/cs193p-2017/tree/master/slides/Lecture-6-Slides.pdf)
+
+* Multiple MVCs
+* View Controller Lifecycle
+* Time Permitting
+

@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FaceViewController.swift
 //  FaceIt
 //
 //  Created by  jasonliao on 25/03/2017.
@@ -8,27 +8,30 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class FaceViewController: VCLLoggingViewController {
 
     @IBOutlet weak var faceView: FaceView! {
         didSet {
             let handler = #selector(FaceView.changeScale(byReactingTo:))
             let pinchRecognizer = UIPinchGestureRecognizer(target: faceView, action: handler)
             faceView.addGestureRecognizer(pinchRecognizer)
+            
             let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(toggleEyes(byReactingTo:)))
             tapRecognizer.numberOfTapsRequired = 1 // 1 is default
             faceView.addGestureRecognizer(tapRecognizer)
+            
             let swipeUpRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(increaseHappiness))
             swipeUpRecognizer.direction = .up
             faceView.addGestureRecognizer(swipeUpRecognizer)
             let swipeDownRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(decreaseHappiness))
             swipeDownRecognizer.direction = .down
             faceView.addGestureRecognizer(swipeDownRecognizer)
+            
             updateUI()
         }
     }
 
-    var expression = FacialExpression(eyes: .open, mouth: .frown) {
+    var expression = FacialExpression(eyes: .open, mouth: .neutral) {
         didSet {
             updateUI()
         }
